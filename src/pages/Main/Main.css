@@ -1,0 +1,30 @@
+/* Main.css */
+.home-page {
+    min-height: 100vh; /* Ensure the page takes at least the full viewport height */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.product-list {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    min-height: calc(100vh - 50px); /* Adjust based on header/footer height */
+}
+
+.product-item {
+    width: 200px;
+    margin: 10px;
+    text-align: center;
+}
+
+.loading {
+    margin: 20px;
+}
+
+.error {
+    color: red;
+    margin: 20px;
+}

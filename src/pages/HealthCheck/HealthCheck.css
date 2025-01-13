@@ -1,0 +1,103 @@
+.health-check-page {
+    width: 100%;
+    min-height: 300px;
+    padding-top: 50px;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    flex-direction: column; /* Default for mobile */
+    overflow: hidden; /* Prevent content overflow */
+}
+
+.service {
+    width: 120px;
+    height: 120px;
+    padding: 20px 10px 10px 10px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    display: inline-block;
+    font-size: 14px;
+    vertical-align: middle;
+    justify-content: center;
+    font-weight: bold;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease;
+    margin: 20px;
+}
+
+/* Service status colors */
+.connected-service {
+    background: linear-gradient(180deg, rgba(30, 242, 193, 0.58), rgb(3, 121, 86));
+    color: #125640;
+    vertical-align: middle;
+    border: #fff 1px solid;
+    cursor: pointer;
+    transition: background 1s ease;
+    animation: neon-gradient 0.5s ease-in-out infinite alternate;
+}
+
+.connected-service:hover {
+    background: linear-gradient(180deg, rgba(25, 210, 167, 0.58), rgb(8, 98, 71));
+    color: #125640;
+}
+
+.disconnected-service {
+    background: linear-gradient(180deg, rgba(242, 58, 58, 0.58), rgb(121, 3, 3));
+    color: #460909;
+    border: #fff 1px solid;
+    cursor: pointer;
+    transition: background 1s ease;
+    animation: neon-red-glow 0.5s ease-in-out infinite alternate;
+}
+
+.disconnected-service:hover {
+    background: linear-gradient(180deg, rgba(218, 30, 30, 0.58), rgb(96, 7, 7));
+    color: #460909;
+}
+
+.status-service {
+    color: #ffffff;
+    font-size: 12px;
+}
+@keyframes neon-gradient {
+    0% {
+        box-shadow:
+                0 0 2px rgba(30, 242, 193, 0.6),
+                0 0 4px rgba(3, 121, 86, 0.7),
+                0 0 6px rgba(30, 242, 193, 0.8),
+                0 0 8px rgba(3, 121, 86, 1),
+                0 0 10px rgba(30, 242, 193, 1),
+                0 0 12px rgba(3, 121, 86, 1);
+    }
+    100% {
+        box-shadow:
+                0 0 4px rgba(3, 121, 86, 0.8),
+                0 0 6px rgba(30, 242, 193, 1),
+                0 0 8px rgba(3, 121, 86, 1),
+                0 0 12px rgba(30, 242, 193, 1),
+                0 0 16px rgba(3, 121, 86, 1),
+                0 0 20px rgba(30, 242, 193, 1);
+    }
+}
+
+@keyframes neon-red-glow {
+    0% {
+        box-shadow:
+                0 0 2px rgba(242, 30, 30, 0.6),
+                0 0 4px rgba(242, 30, 30, 0.7),
+                0 0 6px rgba(121, 3, 3, 0.8),
+                0 0 8px rgba(194, 0, 0, 1),
+                0 0 10px rgba(242, 30, 30, 1),
+                0 0 12px rgba(242, 58, 58, 1);
+    }
+    100% {
+        box-shadow:
+                0 0 4px rgba(242, 30, 30, 0.8),
+                0 0 6px rgba(194, 0, 0, 1),
+                0 0 8px rgba(242, 58, 58, 1),
+                0 0 12px rgba(242, 30, 30, 1),
+                0 0 16px rgba(242, 0, 0, 1),
+                0 0 20px rgba(121, 3, 3, 1);
+    }
+}
