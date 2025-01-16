@@ -2,6 +2,7 @@ import React, { useEffect, useState, useCallback } from "react";
 import { Link } from "react-router-dom";
 import { useInView } from "react-intersection-observer";
 import './Main.css'; // Import the CSS file
+import SimpleImageSlider from "react-simple-image-slider";
 
 const Main = () => {
     const [products, setProducts] = useState([]);
@@ -9,6 +10,9 @@ const Main = () => {
     const [totalPages, setTotalPages] = useState(1);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
+    const images = [
+        { url: "images/1.jpg" },
+    ];
 
     const loadProducts = useCallback(() => {
         if (loading || page > totalPages) return;
@@ -48,23 +52,45 @@ const Main = () => {
     }, [inView, loadProducts]);
 
     return (
-        <div className="home-page">
-            {error ? (
-                <div className="error">{error}</div>
-            ) : (
-                <div className="product-list">
-                    {products.map((product, index) => (
-                        <Link key={`${product.id}-${index}`} to={`/product/${product.id}`} className="product-item">
-                            <h2>{product.name}</h2>
-                            <img src={product.image} alt={product.name} />
-                            <p>{product.description}</p>
-                            <p>Price: ${product.price}</p>
-                        </Link>
-                    ))}
+        <div>
+            <div className="home-page">
+                <div className="slider">
+                    <SimpleImageSlider
+                        width={1360}
+                        height={520}
+                        images={images}
+                        showBullets={true}
+                        style={{radius: "15px"}}
+                        showNavs={false}
+                    />
                 </div>
-            )}
-            {loading && <div className="loading">Loading...</div>}
-            <div ref={ref} className="loading-trigger"></div>
+            </div>
+
+            <div className="products">
+                <div className='list'>
+                    {error ? (
+                        <div className="error">{error}</div>
+                    ) : (
+                        <div className="product-list">
+                            {products.map((product, index) => (
+                                <Link key={`${product.id}-${index}`} to={`/product/${product.id}`}
+                                      className="product-item-container">
+                                    <div className="product-item-image">
+                                        <img src={product.image} alt={product.name}/>
+                                    </div>
+                                    <div>
+                                    <h2 className="product-item-name">{product.name}</h2>
+                                        <p className="product-item-price">Price: ${product.price}</p>
+                                        <div className="add-to-basket">Add to cart</div>
+                                    </div>
+                                </Link>
+                            ))}
+                        </div>
+                    )}
+                    {loading && <div className="loading">Loading...</div>}
+                    <div ref={ref} className="loading-trigger"></div>
+                </div>
+            </div>
         </div>
     );
 };
